@@ -1,0 +1,33 @@
+server:
+  port: 8989
+spring:
+  application:
+    name: free-api
+feign:
+  okhttp:
+    enabled: false
+  compression:
+    request:
+      min-request-size: 2048
+      enabled: false
+    response:
+      useGzipDecoder: false
+      enabled: false
+  httpclient:
+    connection-timeout: 600000
+    follow-redirects: true
+    max-connections: 200
+    max-connections-per-route: 50
+    enabled: true
+    connection-timer-repeat: 3000
+    time-to-live: 900
+  autoconfiguration:
+    jackson:
+      enabled: true
+  circuitbreaker:
+    enabled: false
+  client:
+    default-to-properties: true
+    default-config: default
+    decode-slash: true
+    refresh-enabled: false
