@@ -1,6 +1,6 @@
 package com.free.api.service.feign;
 
-import org.springframework.cloud.client.loadbalancer.LoadBalanced;
+import com.free.api.service.feign.fallback.WeatherServiceFallback;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestParam;
  */
 @FeignClient(name = "WeatherService",url = "http://aider.meizu.com")
 public interface WeatherService {
-    @LoadBalanced
     @GetMapping("/app/weather/listWeather")
-    public String getWeather(@RequestParam("cityIds") String cityId);
+     String getWeather(@RequestParam("cityIds") String cityId);
 }

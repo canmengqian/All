@@ -3,6 +3,26 @@ server:
 spring:
   application:
     name: free-api
+  cloud:
+    sentinel:
+      enabled: true
+      eager: true
+      transport:
+        port: 8719
+        dashboard: localhost:18080
+        heartbeat-interval-ms: 5000
+        client-ip: localhost
+      metric:
+        charset: UTF-8
+        file-single-size: 50M
+        file-total-count: 5
+      filter:
+        enabled: true
+        url-patterns: /**
+      log:
+        switch-pid: false
+        dir: ./scp
+
 feign:
   okhttp:
     enabled: false
@@ -31,3 +51,5 @@ feign:
     default-config: default
     decode-slash: true
     refresh-enabled: false
+  sentinel:
+    enabled: false
